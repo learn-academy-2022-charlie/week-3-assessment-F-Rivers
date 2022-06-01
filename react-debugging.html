@@ -6,6 +6,25 @@
 
 <!-- HINT: Check the console in the browser developer tools for errors. The lines numbers may not match up with the line numbers in your text editor. -->
 
+
+
+<!--
+  Error 1:
+    Problem:
+      - SyntaxError: Adjacent JSX Elements must be wrapped in an enclosing tag. 
+    Resolution:
+      - Enclosed entire return in react fragment. Anytime you want to return more than one line of code, it requires some type of container, whether it be a fragment, div, or other semantic tag.
+  Error 2:
+    Problem:
+      - SyntaxError: JSX Attributes must only be assigned a non-empty expression draw card button had no function to be called
+    Resolution: 
+      - Within the onClick call provided the correct function call of this.drawCard to invoke the drawCard function.
+  Error 3:
+    Problem:
+      - ReferenceError: shuffle is not defined. 
+    Resolution:
+      - In the call for shuffle the this reference wasn't used, added this reference and page loaded correctly.
+-->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -62,12 +81,16 @@
           }
           // No need to change anything ABOVE this line ^
 
-          return(
+          return( 
+//Error1 - line 88/105
+//Error2 - line 90
+//Error3 - line 93
+            <>
             <h1>Draw a Card</h1>
-            <button onClick={}>
+            <button onClick={this.drawCard}>
               Click to Draw a Card
             </button>
-            <button onClick={shuffle}>
+            <button onClick={this.shuffle}>
               Return Cards and Shuffle Deck
             </button>
             <div style={handStyles}>
@@ -79,6 +102,7 @@
                 )
               })}
             </div>
+          </>
           )
         }
       }
